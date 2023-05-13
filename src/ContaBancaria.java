@@ -46,4 +46,8 @@ public class ContaBancaria {
     }
     return false;
   }
+
+  public Cliente getCliente(){
+    return c1;
+  }
 }
