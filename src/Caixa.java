@@ -103,6 +103,16 @@ public class Caixa {
     }
   }
 
+  public void filtrarContas(String nome){
+    for (ContaBancaria conta : contas) {
+      if(conta.getCliente().getNome().toLowerCase().contains(nome.toLowerCase())){
+        System.out.println(conta.getNroConta() + " - " + conta.getCliente().getNome());
+      }else{
+        System.out.println("Nome nao existe!");
+      }
+    }
+  }
+
   public void menu(){
     System.out.println(
     "1. Criar Conta \n"+
@@ -112,7 +122,8 @@ public class Caixa {
     "5. Transferir \n"+
     "6. Listar Contas \n"+
     "7. Remover Conta \n"+
-    "8. Sair"
+    "8. Filtrar Contas \n"+
+    "9. Sair"
     );
   }
 
@@ -122,7 +133,7 @@ public class Caixa {
     int valor;
     int nroConta;
 
-    while(!opc.equals("8")){
+    while(!opc.equals("9")){
       if(opc.equals("1")){
         criarConta();
       }else if(opc.equals("2")){
@@ -153,6 +164,10 @@ public class Caixa {
         System.out.println("Informe o numero da conta: ");
         nroConta=Integer.parseInt(entrada.nextLine());
         removerConta(nroConta);
+      }else if(opc.equals("8")){
+        System.out.println("Informe seu nome: ");
+        String nome=entrada.nextLine();
+        filtrarContas(nome);
       }else{
         System.out.println("Opcao invalida!");
       }
