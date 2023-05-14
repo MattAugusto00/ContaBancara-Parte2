@@ -90,6 +90,19 @@ public class Caixa {
     }
   }
 
+  public void removerConta(int nroConta){
+    for (int i=0; i<contas.size(); i++) {
+      if(nroConta==contas.get(i).getNroConta() && contas.get(i).getSaldo()==0){
+        this.contas.remove(i);
+        System.out.println("Conta removida com sucesso!");
+      }else if(nroConta==contas.get(i).getNroConta() && contas.get(i).getSaldo()>0){
+        System.out.println("Nao foi possivel cancelar conta com saldo disponivel!");
+      }else if(nroConta==contas.get(i).getNroConta() && contas.get(i).getSaldo()<0){
+        System.out.println("Nao foi possivel cancelar conta em debito!");
+      }
+    }
+  }
+
   public void menu(){
     System.out.println(
     "1. Criar Conta \n"+
@@ -98,7 +111,8 @@ public class Caixa {
     "4. Sacar \n"+
     "5. Transferir \n"+
     "6. Listar Contas \n"+
-    "7. Sair"
+    "7. Remover Conta \n"+
+    "8. Sair"
     );
   }
 
@@ -108,7 +122,7 @@ public class Caixa {
     int valor;
     int nroConta;
 
-    while(!opc.equals("7")){
+    while(!opc.equals("8")){
       if(opc.equals("1")){
         criarConta();
       }else if(opc.equals("2")){
@@ -135,6 +149,10 @@ public class Caixa {
         transferir(nroContaOrigem, nroContaDestino);
       }else if(opc.equals("6")){
         listarContas();
+      }else if(opc.equals("7")){
+        System.out.println("Informe o numero da conta: ");
+        nroConta=Integer.parseInt(entrada.nextLine());
+        removerConta(nroConta);
       }else{
         System.out.println("Opcao invalida!");
       }
