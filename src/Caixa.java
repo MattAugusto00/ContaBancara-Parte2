@@ -107,8 +107,6 @@ public class Caixa {
     for (ContaBancaria conta : contas) {
       if(conta.getCliente().getNome().toLowerCase().contains(nome.toLowerCase())){
         System.out.println(conta.getNroConta() + " - " + conta.getCliente().getNome());
-      }else{
-        System.out.println("Nome nao existe!");
       }
     }
   }
